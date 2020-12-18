@@ -29,15 +29,6 @@ public class VfsFsDataAccessDao extends AbstractFsAccessDao implements IFsDataAc
         }
     }
 
-    @Override
-    public void doImport(IDataAccessDao dataAccessDao) {
-
-    }
-
-    @Override
-    public void doExport(OutputStream outputStream) {
-
-    }
 
     @Override
     public void doUnCompress(OutputStream outputStream) {
@@ -55,13 +46,8 @@ public class VfsFsDataAccessDao extends AbstractFsAccessDao implements IFsDataAc
     }
 
     @Override
-    public int insertRecord(Map<String, Object> valueMap) {
+    public int insertRecord(Map<String, Object> valueMap) throws IOException {
         return 0;
-    }
-
-    @Override
-    public List<Map<String, Object>> readRecords(String sql, String tsField, Object... params) {
-        return null;
     }
 
     @Override

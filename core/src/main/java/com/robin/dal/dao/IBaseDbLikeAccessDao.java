@@ -2,7 +2,9 @@ package com.robin.dal.dao;
 
 
 import com.robin.core.fileaccess.meta.DataMappingMeta;
+import com.robin.core.query.extractor.ResultSetOperationExtractor;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -17,8 +19,8 @@ public interface IBaseDbLikeAccessDao extends IDataAccessDao {
     boolean deleteRecord(Map<String,Object> valueMap);
     int batchRecord(List<Map<String,Object>> valueList);
     //void flushDataToFs(DataMappingMeta mappingMeta, String sql, Object[] params, RecordWriterHolder holder);
-    List<Map<String,Object>> executeQuerySync(DataMappingMeta mappingMeta,String sql,Object[] params);
+    List<Map<String,String>> executeQuerySync(String sql,Object[] params) throws SQLException;
     String executeQueryAsync(DataMappingMeta mappingMeta,String sql,Object[] params,Long writeOutSourceId,Map<String,String> configParams);
-
+    void doOperationInQuery(ResultSetOperationExtractor extractor, String sql, Object... params) throws SQLException;
 
 }

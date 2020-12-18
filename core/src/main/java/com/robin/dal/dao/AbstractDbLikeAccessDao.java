@@ -5,6 +5,7 @@ import com.robin.core.base.datameta.DataBaseTableMeta;
 import com.robin.core.base.datameta.DataBaseUtil;
 import com.robin.core.base.exception.DAOException;
 import com.robin.core.collection.util.CollectionMapConvert;
+import com.robin.core.fileaccess.meta.DataCollectionMeta;
 import com.robin.core.fileaccess.meta.DataMappingMeta;
 import javafx.util.Pair;
 import lombok.extern.slf4j.Slf4j;
@@ -22,8 +23,15 @@ public abstract class AbstractDbLikeAccessDao implements IBaseDbLikeAccessDao {
     protected Map<String,DataBaseColumnMeta> tableColumnDefMap=new HashMap<>();
     protected List<String> pkColumns;
     protected Map<String,String> configParams;
+    protected String querySql;
+    protected Object[] queryParams;
 
-    public AbstractDbLikeAccessDao(DataBaseTableMeta tableMeta, List<DataBaseColumnMeta> columnList,List<String> pkColumns, DataMappingMeta mappingMeta,Map<String,String> configParams) {
+    @Override
+    public void init(DataCollectionMeta collectionMeta) {
+
+    }
+
+    public AbstractDbLikeAccessDao(DataBaseTableMeta tableMeta, List<DataBaseColumnMeta> columnList, List<String> pkColumns, DataMappingMeta mappingMeta, Map<String,String> configParams) {
         this.tableMeta=tableMeta;
         this.columnList=columnList;
         this.pkColumns=pkColumns;
@@ -210,5 +218,6 @@ public abstract class AbstractDbLikeAccessDao implements IBaseDbLikeAccessDao {
         }
         return retObjs.toArray();
     }
+
 
 }
